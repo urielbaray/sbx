@@ -46,12 +46,22 @@
             mostrarPasoActual();
         }
 
-        function mostrarPasoActual() {
-            const columnas = ["Ab", "Nom", "Prep"];
-            textoElemento.textContent = filaActual[columnas[indiceDePaso]];
-            indiceDePaso++;
-        }
+function mostrarPasoActual() {
+    const columnas = ["Ab", "Nom", "Prep"];
+    const columnaActual = columnas[indiceDePaso];
+    let textoAMostrar = filaActual[columnaActual];
 
+    // Si la columna actual es "Prep", reemplaza los saltos de línea con etiquetas <br>
+    if (columnaActual === "Prep") {
+        textoAMostrar = textoAMostrar.replace(/\r?\n/g, '<br>');
+        textoElemento.innerHTML = textoAMostrar;
+    } else {
+        // Para las otras columnas, usa textContent
+        textoElemento.textContent = textoAMostrar;
+    }
+
+    indiceDePaso++;
+}
         function siguientePaso() {
             if (datos.length === 0) return;
 
