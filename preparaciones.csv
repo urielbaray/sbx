@@ -1,29 +1,14 @@
-Ab,Nom,Prep
-AB1,Nombre 1,Preparación 1
-AB2,Nombre 2,Preparación 2
-AB3,Nombre 3,Preparación 3
-AB4,Nombre 4,Preparación 4
-AB5,Nombre 5,Preparación 5
-AB6,Nombre 6,Preparación 6
-AB7,Nombre 7,Preparación 7
-AB8,Nombre 8,Preparación 8
-AB9,Nombre 9,Preparación 9
-AB10,Nombre 10,Preparación 10
-AB11,Nombre 11,Preparación 11
-AB12,Nombre 12,Preparación 12
-AB13,Nombre 13,Preparación 13
-AB14,Nombre 14,Preparación 14
-AB15,Nombre 15,Preparación 15
-AB16,Nombre 16,Preparación 16
-AB17,Nombre 17,Preparación 17
-AB18,Nombre 18,Preparación 18
-AB19,Nombre 19,Preparación 19
-AB20,Nombre 20,Preparación 20
-AB21,Nombre 21,Preparación 21
-AB22,Nombre 22,Preparación 22
-AB23,Nombre 23,Preparación 23
-AB24,Nombre 24,Preparación 24
-AB25,Nombre 25,Preparación 25
-AB26,Nombre 26,Preparación 26
-AB27,Nombre 27,Preparación 27
-AB28,Nombre 28,Preparación 28
+Av,Nom,Prep
+BSU,Baguette Suprema,"""3 rodajas de chorizo pamplona
+3 rodajas de lomo de cerdco
+3 rebanadas de pechuga ahumada
+3rebanadas de queso gouda
+SI LLEVA BLISTER DE CHIPOTLE"""
+BES,Baguette EspaÃ±ola,"""3 rodajas de chorizo pamplona
+3 rebanadas de queso gouda
+2 lineas de aderezo de chipotle
+SI LLEVA BLISTER DE CHIPOTLE"""
+CJQ,Croissant de Matequilla con Pechuga y Queso,"""Se parte a lal mitad
+2 rebanadas de queso gouda
+3 rebenadas de pechuga ahumada 
+SI LLEVA BLISTER DE CHIPOTLE"""
