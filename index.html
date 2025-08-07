@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Estudio de Preparaciones</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            padding: 2rem;
+            font-size: 2rem;
+            user-select: none;
+        }
+        #texto {
+            margin-bottom: 2rem;
+        }
+        #boton {
+            font-size: 1.2rem;
+            padding: 1rem 2rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="texto">Cargando...</div>
+    <button id="boton" disabled>Empezar</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <script>
+        let datos = [];
+        let filaActual = null;
+        let indiceDePaso = 0; // 0: Ab, 1: Nom, 2: Prep
+
+        const textoElemento = document.getElementById("texto");
+        const botonElemento = document.getElementById("boton");
+
+        function elegirNuevaFila() {
+            const indiceAleatorio = Math.floor(Math.random() * datos.length);
+            filaActual = datos[indiceAleatorio];
+            indiceDePaso = 0;
+            mostrarPasoActual();
+        }
+
+        function mostrarPasoActual() {
+            const columnas = ["Ab", "Nom", "Prep"];
+            textoElemento.textContent = filaActual[columnas[indiceDePaso]];
+            indiceDePaso++;
+        }
+
+        function siguientePaso() {
+            if (datos.length === 0) return;
+
+            if (indiceDePaso < 3) {
+                // Sigue mostrando el contenido de la fila actual
+                mostrarPasoActual();
+            } else {
+                // El ciclo de la fila actual terminó, elige una nueva
+                elegirNuevaFila();
+            }
+        }
+
+        function cargarCSV() {
+            Papa.parse("preparaciones.csv", {
+                download: true,
+                header: true,
+                transformHeader: h => h.trim(),
+                complete: function(results) {
+                    datos = results.data.filter(fila => 
+                        fila["Ab"] && fila["Nom"] && fila["Prep"]
+                    );
+                    if (datos.length > 0) {
+                        textoElemento.textContent = "¡Listo para empezar!";
+                        botonElemento.disabled = false;
+                        botonElemento.textContent = "Empezar";
+                    } else {
+                        textoElemento.textContent = "Error: No se encontraron datos válidos.";
+                    }
+                }
+            });
+        }
+
+        botonElemento.addEventListener("click", () => {
+            if (botonElemento.textContent === "Empezar") {
+                elegirNuevaFila();
+                botonElemento.textContent = "Siguiente";
+            } else {
+                siguientePaso();
+            }
+        });
+
+        document.body.addEventListener("click", (e) => {
+            if (e.target.id !== 'boton' && botonElemento.textContent !== "Empezar") {
+                siguientePaso();
+            }
+        });
+
+        cargarCSV();
+    </script>
+</body>
+</html>
